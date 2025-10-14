@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Reservación de Hotel</title>
+    <link rel="stylesheet" href="/reserva.css" />
+    <link rel="stylesheet" href="/aside.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <h2>TuViaje Admin</h2>
+
+      <div class="menu-section">
+        <p>👤 Clientes</p>
+        <a href="/clientes">Ver clientes</a>
+        <a href="/clientes/registrar">Registrar cliente</a>
+      </div>
+
+      <div class="menu-section">
+        <p>🏨 Hoteles</p>
+        <a href="/hotel">Ver hoteles</a>
+        <a href="/hotel/registrar">Registrar hotel</a>
+      </div>
+
+      <div class="menu-section">
+        <p>👨‍💼 Empleados</p>
+        <a href="/empleados">Ver empleados</a>
+        <a href="/empleados/registrar">Registrar empleado</a>
+      </div>
+
+      <div class="menu-section">
+        <p>🛏️ Habitaciones</p>
+        <a href="/habitaciones">Ver habitaciones</a>
+        <a href="/habitaciones/registrar">Registrar habitación</a>
+      </div>
+
+      <div class="menu-section">
+        <p>📅 Reservas</p>
+        <a href="/reservas">Ver reservas</a>
+        <a href="/reservas/registrar">Registrar reserva</a>
+      </div>
+    </aside>
+
+    <header>
+      <img src="/img/imagen1.png" alt="Hotel Encabezado" class="header-img" />
+      <h1>Sistema de Reservación de Hotel</h1>
+    </header>
+
+    <main class="container">
+      <section class="form-section">
+        <h2>Registrar Nueva Reservación</h2>
+        <form>
+          <div class="form-grid">
+            <div>
+              <label>Nombre del Cliente:</label>
+              <input type="text" placeholder="Ej. Carla López" required />
+            </div>
+            <div>
+              <label>Correo Electrónico:</label>
+              <input type="email" placeholder="Ej. carla@gmail.com" required />
+            </div>
+            <div>
+              <label>Tipo de Habitación:</label>
+              <select required>
+                <option>Individual</option>
+                <option>Doble</option>
+                <option>Suite</option>
+                <option>Familiar</option>
+              </select>
+            </div>
+            <div>
+              <label>Fecha de Llegada:</label>
+              <input type="date" required />
+            </div>
+            <div>
+              <label>Fecha de Salida:</label>
+              <input type="date" required />
+            </div>
+            <div class="full-width">
+              <label>Comentarios:</label>
+              <textarea
+                rows="2"
+                placeholder="Petición especial o comentarios..."
+              ></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn">Registrar</button>
+        </form>
+      </section>
+
+      <section class="table-section">
+        <h2>Lista de Reservaciones</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Correo</th>
+              <th>Habitación</th>
+              <th>Llegada</th>
+              <th>Salida</th>
+              <th>Comentarios</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>José Acosta</td>
+              <td>jose_acosta@gmail.com</td>
+              <td>Suite</td>
+              <td>2025-11-02</td>
+              <td>2025-11-06</td>
+              <td>Vista al mar</td>
+            </tr>
+            <tr>
+              <td>Victor Guerrero</td>
+              <td>victor_guerrero2@hotmail.com</td>
+              <td>Doble</td>
+              <td>2025-11-05</td>
+              <td>2025-11-08</td>
+              <td>Cama adicional</td>
+            </tr>
+            <tr>
+              <td>Alfredo Aragon</td>
+              <td>alfredo_aragon3@gmail.com</td>
+              <td>Individual</td>
+              <td>2025-11-10</td>
+              <td>2025-11-12</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Leonardas Ovalle</td>
+              <td>leo_ovalle1@outlook.com</td>
+              <td>Familiar</td>
+              <td>2025-11-15</td>
+              <td>2025-11-22</td>
+              <td>Requiere cuna</td>
+            </tr>
+            <tr>
+              <td>Gustavo Andrade</td>
+              <td>gustav_a18@gmail.com</td>
+              <td>Suite</td>
+              <td>2025-11-20</td>
+              <td>2025-11-25</td>
+              <td>Decoración romántica</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        © 2025 Sistema de Reservación de Hotel | Universidad Tecnológica del
+        Perú
+      </p>
+    </footer>
+  </body>
+</html>

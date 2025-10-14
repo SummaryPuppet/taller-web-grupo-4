@@ -1,0 +1,192 @@
+:root {
+  --bg: #0a0a0a;
+  --text: #f5f5f5;
+  --fort: #00ff88;
+  --opor: #00cfff;
+  --debi: #ffea00;
+  --amen: #ff1744;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Hero */
+.hero {
+  width: 100%;
+  height: 250px;
+  background: url('https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero .overlay {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: var(--debi);
+  text-shadow: 0 0 10px var(--debi);
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-top: 10px;
+}
+
+/* Contenedor */
+.container {
+  width: 95%;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+/* Tarjetas */
+.card {
+  background: #111;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+/* Formulario */
+form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+form input, form select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  margin-bottom: 15px;
+  background: #222;
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+form input:focus, form select:focus {
+  background: #333;
+  box-shadow: 0 0 8px var(--debi);
+}
+
+.form-row.two-cols {
+  display: flex;
+  gap: 20px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background: var(--fort);
+  color: #000;
+}
+
+.btn.primary:hover {
+  background: #00d86f;
+  transform: scale(1.05);
+}
+
+.btn.secondary {
+  background: #444;
+  color: #fff;
+}
+
+.btn.secondary:hover {
+  background: #666;
+}
+
+/* Tabla */
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  color: #ddd;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #333;
+}
+
+th {
+  background: var(--amen);
+  color: #fff;
+}
+
+tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transition: background 0.3s ease;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card, form, table {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-row.two-cols {
+    flex-direction: column;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .container {
+    padding: 10px;
+  }
+}

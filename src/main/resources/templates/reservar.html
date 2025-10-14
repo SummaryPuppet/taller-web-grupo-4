@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservar Hotel - TuViaje</title>
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/reservar-main.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <h1>Reserva tu hotel</h1>
+      <p>Completa los datos para asegurar tu estadía perfecta 🏖️</p>
+    </header>
+
+    <main class="container">
+      <form id="reservaForm" class="card" autocomplete="off">
+        <h2>📝 Detalles de la Reserva</h2>
+
+        <div class="form-row">
+          <label for="hotel">Hotel</label>
+          <select id="hotel" name="hotel" required>
+            <option value="">-- Seleccionar hotel --</option>
+            <option value="Eclipse">Hotel Eclipse</option>
+            <option value="El Bunker">Hotel El Bunker</option>
+            <option value="Hiltom">Hotel Hiltom</option>
+            <option value="Terrible">Hotel Terrible</option>
+            <option value="Love">Hotel Love</option>
+            <option value="Ibis">Hotel Ibis</option>
+            <option value="Britania">Hotel Britania</option>
+            <option value="Asturias">Hotel Asturias</option>
+          </select>
+        </div>
+
+        <div class="form-row two-cols">
+          <div>
+            <label for="checkin">Fecha de entrada</label>
+            <input id="checkin" name="checkin" type="date" required />
+          </div>
+          <div>
+            <label for="checkout">Fecha de salida</label>
+            <input id="checkout" name="checkout" type="date" required />
+          </div>
+        </div>
+
+        <div class="form-row two-cols">
+          <div>
+            <label for="huespedes">Huéspedes</label>
+            <input
+              id="huespedes"
+              name="huespedes"
+              type="number"
+              min="1"
+              placeholder="Ej: 2"
+              required
+            />
+          </div>
+          <div>
+            <label for="habitacion">Tipo de habitación</label>
+            <select id="habitacion" name="habitacion" required>
+              <option value="">-- Seleccionar --</option>
+              <option value="simple">Simple</option>
+              <option value="doble">Doble</option>
+              <option value="suite">Suite</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="notas">Notas adicionales</label>
+          <textarea
+            id="notas"
+            name="notas"
+            rows="3"
+            placeholder="Ej: Necesito cama extra, sin ruido..."
+          ></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Confirmar reserva</button>
+          <button type="reset" class="btn secondary">Limpiar</button>
+        </div>
+      </form>
+
+      <section class="resumen card">
+        <h2>📋 Resumen de tu reserva</h2>
+        <p><strong>Hotel:</strong> <span id="resumenHotel">-</span></p>
+        <p><strong>Fechas:</strong> <span id="resumenFechas">-</span></p>
+        <p><strong>Huéspedes:</strong> <span id="resumenHuespedes">-</span></p>
+        <p>
+          <strong>Habitación:</strong> <span id="resumenHabitacion">-</span>
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 TuViaje. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+      const form = document.getElementById("reservaForm");
+      const resumenHotel = document.getElementById("resumenHotel");
+      const resumenFechas = document.getElementById("resumenFechas");
+      const resumenHuespedes = document.getElementById("resumenHuespedes");
+      const resumenHabitacion = document.getElementById("resumenHabitacion");
+
+      form.addEventListener("input", () => {
+        resumenHotel.textContent = form.hotel.value || "-";
+        resumenFechas.textContent =
+          form.checkin.value && form.checkout.value
+            ? `${form.checkin.value} → ${form.checkout.value}`
+            : "-";
+        resumenHuespedes.textContent = form.huespedes.value || "-";
+        resumenHabitacion.textContent = form.habitacion.value || "-";
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("✅ Reserva confirmada con éxito. ¡Disfruta tu viaje!");
+        form.reset();
+        resumenHotel.textContent =
+          resumenFechas.textContent =
+          resumenHuespedes.textContent =
+          resumenHabitacion.textContent =
+            "-";
+      });
+    </script>
+  </body>
+</html>

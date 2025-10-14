@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registro de Habitaciones</title>
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/habitacion.css" />
+    <link rel="stylesheet" href="/aside.css" />
+  </head>
+
+  <body>
+    <!-- ASIDE COMPARTIDO -->
+    <aside class="sidebar">
+      <h2>TuViaje Admin</h2>
+
+      <div class="menu-section">
+        <p>👤 Clientes</p>
+        <a href="/admin/clientes">Ver clientes</a>
+        <a href="/admin/clientes/registrar">Registrar cliente</a>
+      </div>
+
+      <div class="menu-section">
+        <p>🏨 Hoteles</p>
+        <a href="/admin/hotel">Ver hoteles</a>
+        <a href="/admin/hotel/registrar">Registrar hotel</a>
+      </div>
+
+      <div class="menu-section">
+        <p>👨‍💼 Empleados</p>
+        <a href="/admin/empleados">Ver empleados</a>
+        <a href="/admin/empleados/registrar">Registrar empleado</a>
+      </div>
+
+      <div class="menu-section">
+        <p>🛏️ Habitaciones</p>
+        <a href="/admin/habitaciones">Ver habitaciones</a>
+        <a href="/admin/habitaciones/registrar">Registrar habitación</a>
+      </div>
+
+      <div class="menu-section">
+        <p>📅 Reservas</p>
+        <a href="/admin/reservas">Ver reservas</a>
+        <a href="/admin/reservas/registrar">Registrar reserva</a>
+      </div>
+    </aside>
+
+    <div class="main">
+      <!-- HEADER -->
+      <header class="hero">
+        <div class="overlay">
+          <h1>🛏️ Registro de Habitaciones</h1>
+          <p>
+            Administra y registra fácilmente la información de las habitaciones
+          </p>
+        </div>
+      </header>
+
+      <!-- MAIN -->
+      <main class="container">
+        <form id="habitacionForm" class="card" autocomplete="off">
+          <h2>📝 Registrar Habitaciones</h2>
+
+          <!-- Número y Tipo de habitación -->
+          <div class="form-row two-cols">
+            <div>
+              <label for="numero">Número de habitación</label>
+              <select id="numero" name="numero" required>
+                <option value="">-- Seleccionar --</option>
+                <!-- Habitaciones del 101 al 120 -->
+                ${[...Array(20)] .map( (_, i) => `
+                <option value="${101 + i}">${101 + i}</option>
+                ` ) .join("")}
+              </select>
+            </div>
+
+            <div>
+              <label for="tipo">Tipo de habitación</label>
+              <select id="tipo" name="tipo" required>
+                <option value="">-- Seleccionar --</option>
+                <option value="Individual">Individual</option>
+                <option value="Doble">Doble</option>
+                <option value="Suite">Suite</option>
+                <option value="Matrimonial">Matrimonial</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Precio y estado -->
+          <div class="form-row two-cols">
+            <div>
+              <label for="precio">Precio de las habitaciones</label>
+              <select id="precio" name="precio" required>
+                <option value="">-- Seleccionar --</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+                <option value="400">400</option>
+                <option value="500">500</option>
+                <option value="600">600</option>
+                <option value="700">700</option>
+                <option value="800">800</option>
+                <option value="900">900</option>
+                <option value="1000">1000</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="estado">Estado</label>
+              <select id="estado" name="estado" required>
+                <option value="Libre">Libre</option>
+                <option value="Ocupada">Ocupada</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Registrar</button>
+            <button type="reset" class="btn secondary">Limpiar</button>
+          </div>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>

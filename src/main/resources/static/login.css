@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(-45deg, #0077b6, #0096c7, #00b4d8, #023e8a);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Caja */
+.login-box {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.8s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.login-box h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.login-box p {
+  color: #f1f1f1;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.login-box input::placeholder {
+  color: #eee;
+}
+
+.login-box input:focus {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.03);
+}
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background: #0077b6;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-box button:hover {
+  background: #023e8a;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #0096c7;
+}
+
+.link {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.link a {
+  color: #caf0f8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.link a:hover {
+  color: #ffffff;
+}

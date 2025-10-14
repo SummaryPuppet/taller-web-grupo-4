@@ -1,0 +1,107 @@
+:root {
+  --primary: #0077b6;
+  --primary-hover: #1c7cd6;
+  --text-light: #ffffff;
+}
+
+/* ====== Barra lateral ====== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background: var(--primary);
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+}
+
+.menu-section {
+  margin-bottom: 1.5rem;
+}
+
+.menu-section p {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  padding-left: 8px;
+  color: var(--text-light);
+  opacity: 0.9;
+}
+
+.sidebar a {
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 10px 12px;
+  margin: 4px 0;
+  border-radius: 5px;
+  transition: background 0.3s;
+  font-size: 0.95rem;
+  display: block;
+}
+
+.sidebar a:hover {
+  background: var(--primary-hover);
+}
+
+/* ====== Botón toggle (solo en móvil) ====== */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: var(--primary);
+  color: var(--text-light);
+  border: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 1100;
+  transition: background 0.3s;
+}
+
+.menu-toggle:hover {
+  background: var(--primary-hover);
+}
+
+/* ====== Espaciado del contenido principal ====== */
+.hero,
+.container {
+  margin-left: 220px;
+  transition: margin-left 0.3s ease;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 850px) {
+  /* Ocultar sidebar inicialmente */
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  /* Mostrar cuando esté activa */
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  /* Mostrar el botón */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Ajustar el contenido cuando el menú esté oculto */
+  .hero,
+  .container {
+    margin-left: 0;
+  }
+}
