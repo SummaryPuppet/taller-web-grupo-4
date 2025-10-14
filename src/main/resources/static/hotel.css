@@ -199,3 +199,96 @@ tbody tr:hover {
   flex: 1;
   padding: 2rem;
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación para aparición lateral del aside */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-220px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animación para el header tipo fade */
+@keyframes fadeZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* === Aplicación de animaciones === */
+.sidebar {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.hero {
+  animation: fadeZoom 0.8s ease-out forwards;
+}
+
+.card {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+table tr {
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+table tr:hover {
+  transform: scale(1.01);
+}
+
+/* Animación para botones */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease;
+}
+.btn:hover::after {
+  left: 0;
+}
+
+/* Animación al enfocar inputs */
+.form-row input,
+.form-row select {
+  transition: all 0.3s ease;
+}
+.form-row input:focus,
+.form-row select:focus {
+  transform: scale(1.02);
+}
+
+/* === Suavidad general === */
+body,
+.sidebar,
+.main,
+.card,
+.hero {
+  transition: all 0.4s ease;
+}
