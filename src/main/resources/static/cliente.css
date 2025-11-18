@@ -1,4 +1,4 @@
-/* esto es el fondo animado */
+/* Fondo animado */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@ body {
   animation: cambiarFondo 20s infinite alternate ease-in-out;
 }
 
-/* capa oscura semitransparente sobre las imágenes xd */
+/* Capa oscura semitransparente sobre las imágenes */
 body::before {
   content: "";
   position: absolute;
@@ -23,7 +23,7 @@ body::before {
   pointer-events: none;
 }
 
-/* es el contenedor de formulario */
+/* Tu contenedor de formulario */
 .contenedor {
   position: relative;
   z-index: 1; /* Se mantiene sobre la capa oscura */
@@ -33,7 +33,7 @@ body::before {
   width: 100%;
   max-width: 420px;
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
-  color: white;
+  color: rgb(214, 214, 214);
   animation: fadeIn 1.5s ease;
 }
 
@@ -46,7 +46,7 @@ body::before {
     background-image: url("https://cache.marriott.com/is/image/marriotts7prod/limwi-pool-0877:Wide-Hor?wid=1318&fit=constrain");
   }
   66% {
-    background-image: url("https://media-cdn.tripadvisor.com/media/photo-s/1c/af/6f/4a/20210220-212903-largejpg.jpg");
+    background-image: url("https://static.vecteezy.com/system/resources/previews/022/502/423/non_2x/interior-of-luxury-hotel-with-swimming-pool-and-plants-photo.jpg");
   }
   100% {
     background-image: url("https://s3.amazonaws.com/static-webstudio-accorhotels-usa-1.wp-ha.fastbooking.com/wp-content/uploads/sites/14/2023/02/03161521/Sofitel_2022v3_66-1170x780.jpg");
@@ -130,32 +130,33 @@ body::before {
 .container {
   background: rgba(0, 0, 0, 0.692); /* Fondo oscuro y opaco */
   border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: none;
+  backdrop-filter: none; /* Quita el blur */
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   padding: 30px;
   width: 400px;
   animation: slideUp 0.6s ease-out;
 }
-/*PARa la animacion del cuadro de registros*/
+
+h1 {
+  text-align: center;
+  color: #fff; /* Color final que quieres mantener */
+  margin-bottom: 20px;
+  animation: aparecer 1.2s ease forwards; /* 🔹 Mantiene el color final */
+}
+
+/* Animación de entrada */
 @keyframes aparecer {
   from {
     opacity: 0;
     transform: translateY(-20px);
-    color: #add8e6;
+    color: #add8e6; /* Azul clarito al inicio */
   }
   to {
     opacity: 1;
     transform: translateY(0);
-    color: #fff;
+    color: #fff; /* Color final */
   }
-}
-
-h1 {
-  text-align: center;
-  color: #fff;
-  margin-bottom: 20px;
-  animation: aparecer 1.2s ease forwards;
 }
 
 label {
@@ -172,7 +173,7 @@ select {
   border: none;
   border-radius: 8px;
   margin-top: 5px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(122, 119, 119, 0.9);
   font-size: 15px;
   transition: all 0.3s ease;
 }
@@ -269,5 +270,46 @@ tr:nth-child(even) {
   select,
   button {
     font-size: 14px;
+  }
+}
+
+/* Contenedor fijo */
+#burbujas-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: auto;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Burbuja */
+.burbuja {
+  background: rgba(0, 102, 255, 0.9);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 25px;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: subir 9s ease-out forwards;
+}
+
+/* Animación */
+@keyframes subir {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px);
   }
 }

@@ -49,19 +49,29 @@
     <main class="container">
       <section class="form-section">
         <h2>Registrar Nueva Reservación</h2>
-        <form>
+        <form id="formReserva">
           <div class="form-grid">
             <div>
               <label>Nombre del Cliente:</label>
-              <input type="text" placeholder="Ej. Carla López" required />
+              <input
+                type="text"
+                placeholder="Ej. Carla López"
+                required
+                id="nombre"
+              />
             </div>
             <div>
               <label>Correo Electrónico:</label>
-              <input type="email" placeholder="Ej. carla@gmail.com" required />
+              <input
+                type="email"
+                placeholder="Ej. carla@gmail.com"
+                required
+                id="correo"
+              />
             </div>
             <div>
               <label>Tipo de Habitación:</label>
-              <select required>
+              <select required id="habitacion">
                 <option>Individual</option>
                 <option>Doble</option>
                 <option>Suite</option>
@@ -70,17 +80,18 @@
             </div>
             <div>
               <label>Fecha de Llegada:</label>
-              <input type="date" required />
+              <input type="date" required id="llegada" />
             </div>
             <div>
               <label>Fecha de Salida:</label>
-              <input type="date" required />
+              <input type="date" required id="salida" />
             </div>
             <div class="full-width">
               <label>Comentarios:</label>
               <textarea
                 rows="2"
                 placeholder="Petición especial o comentarios..."
+                id="comentarios"
               ></textarea>
             </div>
           </div>
@@ -101,48 +112,7 @@
               <th>Comentarios</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>José Acosta</td>
-              <td>jose_acosta@gmail.com</td>
-              <td>Suite</td>
-              <td>2025-11-02</td>
-              <td>2025-11-06</td>
-              <td>Vista al mar</td>
-            </tr>
-            <tr>
-              <td>Victor Guerrero</td>
-              <td>victor_guerrero2@hotmail.com</td>
-              <td>Doble</td>
-              <td>2025-11-05</td>
-              <td>2025-11-08</td>
-              <td>Cama adicional</td>
-            </tr>
-            <tr>
-              <td>Alfredo Aragon</td>
-              <td>alfredo_aragon3@gmail.com</td>
-              <td>Individual</td>
-              <td>2025-11-10</td>
-              <td>2025-11-12</td>
-              <td>-</td>
-            </tr>
-            <tr>
-              <td>Leonardas Ovalle</td>
-              <td>leo_ovalle1@outlook.com</td>
-              <td>Familiar</td>
-              <td>2025-11-15</td>
-              <td>2025-11-22</td>
-              <td>Requiere cuna</td>
-            </tr>
-            <tr>
-              <td>Gustavo Andrade</td>
-              <td>gustav_a18@gmail.com</td>
-              <td>Suite</td>
-              <td>2025-11-20</td>
-              <td>2025-11-25</td>
-              <td>Decoración romántica</td>
-            </tr>
-          </tbody>
+          <tbody id="tablaBody"></tbody>
         </table>
       </section>
     </main>
@@ -153,5 +123,6 @@
         Perú
       </p>
     </footer>
+    <script src="/js/reserva.js"></script>
   </body>
 </html>

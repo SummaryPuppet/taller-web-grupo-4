@@ -66,10 +66,9 @@
               <label for="numero">Número de habitación</label>
               <select id="numero" name="numero" required>
                 <option value="">-- Seleccionar --</option>
-                <!-- Habitaciones del 101 al 120 -->
-                ${[...Array(20)] .map( (_, i) => `
-                <option value="${101 + i}">${101 + i}</option>
-                ` ) .join("")}
+                <th:block th:each="n : ${#numbers.sequence(101,120)}">
+                  <option th:value="${n}" th:text="${n}"></option>
+                </th:block>
               </select>
             </div>
 
@@ -120,5 +119,6 @@
         </form>
       </main>
     </div>
+    <script src="/js/habitacion.js"></script>
   </body>
 </html>

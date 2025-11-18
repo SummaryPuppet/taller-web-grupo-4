@@ -98,33 +98,6 @@
       <p>© 2025 TuViaje. Todos los derechos reservados.</p>
     </footer>
 
-    <script>
-      const form = document.getElementById("reservaForm");
-      const resumenHotel = document.getElementById("resumenHotel");
-      const resumenFechas = document.getElementById("resumenFechas");
-      const resumenHuespedes = document.getElementById("resumenHuespedes");
-      const resumenHabitacion = document.getElementById("resumenHabitacion");
-
-      form.addEventListener("input", () => {
-        resumenHotel.textContent = form.hotel.value || "-";
-        resumenFechas.textContent =
-          form.checkin.value && form.checkout.value
-            ? `${form.checkin.value} → ${form.checkout.value}`
-            : "-";
-        resumenHuespedes.textContent = form.huespedes.value || "-";
-        resumenHabitacion.textContent = form.habitacion.value || "-";
-      });
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        alert("Reserva confirmada con éxito. ¡Disfruta tu viaje!");
-        form.reset();
-        resumenHotel.textContent =
-          resumenFechas.textContent =
-          resumenHuespedes.textContent =
-          resumenHabitacion.textContent =
-            "-";
-      });
-    </script>
+    <script src="/js/reservar.js"></script>
   </body>
 </html>
