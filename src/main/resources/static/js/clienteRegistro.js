@@ -22,7 +22,6 @@ function crearBurbuja(texto) {
 
     contenedor.appendChild(burbuja);
 
-    // Eliminar después de X segundos (hazlo igual que en CSS)
     setTimeout(() => {
         burbuja.remove();
     }, 6000); // 6 segundos

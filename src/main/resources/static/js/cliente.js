@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     filas.forEach(fila => {
 
-        // --- Hover dinámico ---
         fila.addEventListener("mouseenter", () => {
             fila.style.background = "rgba(255, 255, 255, 0.15)";
             fila.style.transition = "0.25s";
@@ -15,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // --- Selección permanente ---
         fila.addEventListener("click", () => {
             // Quitar selección de otras filas
             filas.forEach(f => {
