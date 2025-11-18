@@ -43,10 +43,10 @@ body::before {
     background-image: url("https://cf.bstatic.com/xdata/images/hotel/max1024x768/492477196.jpg?k=973af30784ceab4a4e2e4bc4ebf9ee2fbff691464df57c1250931c3d80866725&o=&hp=1");
   }
   33% {
-    background-image: url("https://cache.marriott.com/is/image/marriotts7prod/limwi-pool-0877:Wide-Hor?wid=1318&fit=constrain");
+    background-image: url("https://thumbs.dreamstime.com/b/sala-de-espera-del-hotel-92991022.jpg");
   }
   66% {
-    background-image: url("https://static.vecteezy.com/system/resources/previews/022/502/423/non_2x/interior-of-luxury-hotel-with-swimming-pool-and-plants-photo.jpg");
+    background-image: url("https://thumbs.dreamstime.com/b/moderna-zona-de-espera-en-un-lujoso-vest%C3%ADbulo-hotel-con-sof%C3%A1-paredes-blancas-y-suelo-hormig%C3%B3n-gran-ventana-piso-d-render-216519597.jpg");
   }
   100% {
     background-image: url("https://s3.amazonaws.com/static-webstudio-accorhotels-usa-1.wp-ha.fastbooking.com/wp-content/uploads/sites/14/2023/02/03161521/Sofitel_2022v3_66-1170x780.jpg");
@@ -166,18 +166,6 @@ label {
   font-size: 15px;
 }
 
-input,
-select {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  margin-top: 5px;
-  background-color: rgba(122, 119, 119, 0.9);
-  font-size: 15px;
-  transition: all 0.3s ease;
-}
-
 input:focus,
 select:focus {
   outline: none;
@@ -287,7 +275,7 @@ tr:nth-child(even) {
 
 /* Burbuja */
 .burbuja {
-  background: rgba(0, 102, 255, 0.9);
+  background: rgba(0, 102, 255, 0.384);
   color: white;
   padding: 12px 18px;
   border-radius: 25px;
@@ -312,4 +300,109 @@ tr:nth-child(even) {
     opacity: 0;
     transform: translateY(-40px);
   }
+}
+
+.seleccionada {
+  backdrop-filter: blur(4px);
+  transform: scale(1.01);
+}
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+#btnLimpiar {
+  background: rgba(255, 3, 3, 0.247);
+  backdrop-filter: blur(8px);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.paginacion {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.paginacion button {
+  padding: 6px 12px;
+  border: none;
+  background: #e6e6e6;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.paginacion button:hover {
+  background: #cfcfcf;
+}
+
+.paginacion .activo {
+  background: #007bff;
+  color: white;
+  box-shadow: 0 0 6px rgba(0, 0, 255, 0.4);
+}
+
+/* CONTENEDOR DE LA PAGINACIÓN */
+#numerosPaginas {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+/* BOTONES FIJOS DE TAMAÑO */
+#numerosPaginas button {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  justify-content: center; /* centra el número */
+  align-items: center;
+
+  font-size: 16px;
+
+  background-color: #ffffff20;
+  color: white;
+  border: none !important;
+  outline: none !important;
+
+  padding: 0 !important;
+  margin: 0;
+  border-radius: 6px;
+  cursor: pointer;
+
+  box-sizing: border-box;
+}
+
+/* Evita que el foco cambie el tamaño */
+#numerosPaginas button:focus,
+#numerosPaginas button:active {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Hover */
+#numerosPaginas button:hover {
+  background-color: #0a71ff;
+}
+
+/* BOTÓN ACTIVO */
+#numerosPaginas button.activo {
+  background-color: #0d47a1;
+  font-weight: bold;
 }

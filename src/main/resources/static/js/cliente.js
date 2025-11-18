@@ -1,29 +1,77 @@
-window.addEventListener("load", function () {
-    // Lista de nombres (puedes poner los que quieras)
-    const nombres = ["Juan", "María", "Pedro", "Ana", "Carlos", "Lucía", "Sofía", "Diego"];
+document.addEventListener("DOMContentLoaded", () => {
+    const filas = document.querySelectorAll("table tbody tr");
 
-    // GENERAR 3 BURBUJAS
-    for (let i = 0; i < 3; i++) {
-        const nombreRandom = nombres[Math.floor(Math.random() * nombres.length)];
+    filas.forEach(fila => {
 
-        // Hacer que no salgan todas juntas (intervalos)
-        setTimeout(() => {
-            crearBurbuja(`${nombreRandom} se registró`);
-        }, i * 1500); // Cada 1.5 segundos aparece una nueva
-    }
+        // --- Hover dinámico ---
+        fila.addEventListener("mouseenter", () => {
+            fila.style.background = "rgba(255, 255, 255, 0.15)";
+            fila.style.transition = "0.25s";
+        });
+
+        fila.addEventListener("mouseleave", () => {
+            if (!fila.classList.contains("seleccionada")) {
+                fila.style.background = "transparent";
+            }
+        });
+
+        // --- Selección permanente ---
+        fila.addEventListener("click", () => {
+            // Quitar selección de otras filas
+            filas.forEach(f => {
+                f.classList.remove("seleccionada");
+                f.style.background = "transparent";
+            });
+
+            // Marcar fila actual
+            fila.classList.add("seleccionada");
+            fila.style.background = "rgba(255, 0, 13, 0.22)";
+        });
+    });
 });
 
-function crearBurbuja(texto) {
-    const contenedor = document.getElementById("burbujas-container");
 
-    const burbuja = document.createElement("div");
-    burbuja.classList.add("burbuja");
-    burbuja.textContent = texto;
 
-    contenedor.appendChild(burbuja);
+document.addEventListener("DOMContentLoaded", () => {
+    const filas = Array.from(document.querySelectorAll("tbody tr"));
+    const registrosPorPagina = 10;
+    let paginaActual = 1;
+    const totalPaginas = Math.ceil(filas.length / registrosPorPagina);
 
-    // Eliminar después de X segundos (hazlo igual que en CSS)
-    setTimeout(() => {
-        burbuja.remove();
-    }, 9000); // 6 segundos
-}
+    function mostrarPagina(numero) {
+        paginaActual = numero;
+        const inicio = (numero - 1) * registrosPorPagina;
+        const fin = inicio + registrosPorPagina;
+
+        filas.forEach((fila, index) => {
+            fila.style.display = (index >= inicio && index < fin) ? "" : "none";
+        });
+
+        actualizarNumeros();
+    }
+
+    function actualizarNumeros() {
+        const cont = document.getElementById("numerosPaginas");
+        cont.innerHTML = "";
+
+        for (let i = 1; i <= totalPaginas; i++) {
+            const btn = document.createElement("button");
+            btn.textContent = i;
+            if (i === paginaActual) btn.classList.add("activo");
+            btn.addEventListener("click", () => mostrarPagina(i));
+            cont.appendChild(btn);
+        }
+    }
+
+    window.primeraPagina = () => mostrarPagina(1);
+    window.paginaAnterior = () => {
+        if (paginaActual > 1) mostrarPagina(paginaActual - 1);
+    };
+    window.paginaSiguiente = () => {
+        if (paginaActual < totalPaginas) mostrarPagina(paginaActual + 1);
+    };
+    window.ultimaPagina = () => mostrarPagina(totalPaginas);
+
+    // Mostrar desde la página 1 al cargar
+    mostrarPagina(1);
+});
