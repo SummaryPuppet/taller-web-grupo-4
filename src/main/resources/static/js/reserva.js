@@ -28,7 +28,6 @@ function crearModal(mensaje, tipo = "exito") {
     const icon = document.createElement("div");
     icon.style.fontSize = "40px";
     icon.style.marginBottom = "10px";
-    icon.textContent = tipo === "exito";
 
     const texto = document.createElement("p");
     texto.textContent = mensaje;
