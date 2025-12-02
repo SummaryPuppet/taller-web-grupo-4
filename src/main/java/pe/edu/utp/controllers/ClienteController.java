@@ -31,6 +31,6 @@ public class ClienteController {
     String registrar(@ModelAttribute ClienteDTO clienteDTO){
         clienteService.registrarCliente(clienteDTO);
 
-        return "redirect:/clientes";
+        return "redirect:/admin/clientes";
     }
 }

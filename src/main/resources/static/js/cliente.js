@@ -73,3 +73,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // Mostrar desde la página 1 al cargar
     mostrarPagina(1);
 });
+
+
+window.addEventListener("DOMContentLoaded", function () {
+    const cuerpoTabla = document.getElementById("tablaClientes");
+
+    // Leer clientes guardados
+    let clientes = JSON.parse(localStorage.getItem("clientes")) || [];
+
+    clientes.forEach(c => {
+        const fila = document.createElement("tr");
+
+
+        fila.innerHTML = `
+            <td>${c.nombre}</td>
+            <td>${c.apellidoPaterno}</td>
+            <td>${c.apellidoMaterno}</td>
+            <td>${c.nacionalidad}</td>
+            <td>${c.genero}</td>
+            <td>${c.dni}</td>
+        `;
+
+        cuerpoTabla.appendChild(fila);
+    });
+});

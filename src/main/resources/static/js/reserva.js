@@ -84,9 +84,62 @@ form.addEventListener("submit", function (e) {
     // Insertar fila
     tbody.appendChild(nuevaFila);
 
+    // Guardar reserva en localStorage
+    try {
+        const existentes = JSON.parse(localStorage.getItem('reservas') || '[]');
+        existentes.push({
+            nombre: nombre,
+            correo: correo,
+            habitacion: habitacion,
+            llegada: llegada,
+            salida: salida,
+            comentarios: comentarios,
+            creadoEn: new Date().toISOString()
+        });
+        localStorage.setItem('reservas', JSON.stringify(existentes));
+    } catch (err) {
+        console.error('Error guardando reserva en localStorage', err);
+    }
+
     // Limpiar inputs
     form.reset();
 
     // Modal de éxito
     crearModal("Reservación registrada exitosamente.", "exito");
 });
+
+// Cargar reservas guardadas en localStorage y mostrarlas en la tabla
+function cargarReservas() {
+    try {
+        const reservas = JSON.parse(localStorage.getItem('reservas') || '[]');
+        reservas.forEach(r => {
+            const fila = document.createElement('tr');
+
+            // Compatibilidad: aceptar objetos creados desde "reservar.html" (hotel/checkin/checkout)
+            // y desde el formulario admin (nombre/correo/llegada/salida)
+            const cliente = r.nombre || r.cliente || r.hotel || '-';
+            const correo = r.correo || (typeof localStorage !== 'undefined' ? localStorage.getItem('loginEmail') : null) || '-';
+            const habitacion = r.habitacion || r.habitacionLabel || r.tipo || '-';
+            const llegada = r.llegada || r.checkin || r.llegada || r.inicio || '-';
+            const salida = r.salida || r.checkout || r.salida || '-';
+            const comentarios = r.comentarios || r.notas || r.comentario || '-';
+
+            fila.innerHTML = `
+                    <td>${cliente}</td>
+                    <td>${correo}</td>
+                    <td>${habitacion}</td>
+                    <td>${llegada}</td>
+                    <td>${salida}</td>
+                    <td>${comentarios}</td>
+                `;
+            tbody.appendChild(fila);
+        });
+    } catch (err) {
+        console.error('Error cargando reservas de localStorage', err);
+    }
+}
+
+// Ejecutar carga al inicio si existe la tabla en la página
+if (tbody) {
+    cargarReservas();
+}

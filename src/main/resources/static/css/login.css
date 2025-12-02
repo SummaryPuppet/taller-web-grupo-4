@@ -114,3 +114,11 @@ body {
 .link a:hover {
   color: #ffffff;
 }
+
+/* Ensure inputs and buttons render the same visual width inside the login box */
+.login-box input,
+.login-box button {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+}

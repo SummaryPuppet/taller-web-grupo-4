@@ -32,3 +32,34 @@ function limpiarFormulario() {
     document.getElementById("registroCliente").reset();
     localStorage.clear();
 }
+
+document.getElementById("registroCliente").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Datos del formulario
+    const cliente = {
+        nombre: document.getElementById("nombre").value,
+        apellidoPaterno: document.getElementById("apellidoPaterno").value,
+        apellidoMaterno: document.getElementById("apellidoMaterno").value,
+        nacionalidad: document.getElementById("nacionalidad").value,
+        genero: document.getElementById("genero").value,
+        dni: document.getElementById("dni").value
+    };
+
+    // Obtener lista actual o crear una
+    let clientes = JSON.parse(localStorage.getItem("clientes")) || [];
+
+    // Agregar nuevo cliente
+    clientes.push(cliente);
+
+    // Guardar en localStorage
+    localStorage.setItem("clientes", JSON.stringify(clientes));
+
+    alert("Cliente registrado!");
+
+    // Limpiar formulario
+    this.reset();
+
+    // (Opcional) Redirigir
+    window.location.href = "/admin/clientes";
+});

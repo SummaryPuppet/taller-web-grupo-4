@@ -102,6 +102,41 @@ if (reservaForm) {
             return;
         }
 
+        // Obtener texto legible de la opción seleccionada y notas
+        const habitacionLabel = reservaForm.habitacion.options[reservaForm.habitacion.selectedIndex].textContent || habitacion;
+        const notas = document.getElementById('notas') ? document.getElementById('notas').value.trim() : '';
+
+        // Leer email guardado (si el usuario inició sesión previamente)
+        let correoGuardado = null;
+        try {
+            correoGuardado = localStorage.getItem('loginEmail') || null;
+        } catch (err) {
+            console.error('Error leyendo loginEmail de localStorage', err);
+            correoGuardado = null;
+        }
+
+        // Construir objeto reserva (forma estándar para storage)
+        const nuevaReserva = {
+            cliente: null,
+            correo: correoGuardado,
+            hotel: hotel,
+            llegada: checkin,
+            salida: checkout,
+            huespedes: huespedes,
+            habitacion: habitacionLabel,
+            comentarios: notas || '-',
+            creadoEn: new Date().toISOString()
+        };
+
+        // Guardar en localStorage bajo la clave 'reservas'
+        try {
+            const existentes = JSON.parse(localStorage.getItem('reservas') || '[]');
+            existentes.push(nuevaReserva);
+            localStorage.setItem('reservas', JSON.stringify(existentes));
+        } catch (err) {
+            console.error('Error guardando reserva en localStorage', err);
+        }
+
         // Éxito: mostrar modal y reiniciar
         crearModal('Reserva confirmada con éxito. ¡Disfruta tu viaje!', 'exito');
         setTimeout(() => {
