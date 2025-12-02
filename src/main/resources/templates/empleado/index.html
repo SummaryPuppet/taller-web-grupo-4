@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lista de Empleados</title>
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/empleado.css" />
+    <link rel="stylesheet" href="/css/aside.css" />
+  </head>
+
+  <body>
+    <!-- ASIDE COMPARTIDO -->
+    <aside class="sidebar">
+      <h2>TuViaje Admin</h2>
+
+      <div class="menu-section">
+        <p>Clientes</p>
+        <a href="/admin/clientes">Ver clientes</a>
+        <a href="/admin/clientes/registrar">Registrar cliente</a>
+      </div>
+
+      <div class="menu-section">
+        <p>Hoteles</p>
+        <a href="/admin/hotel">Ver hoteles</a>
+        <a href="/admin/hotel/registrar">Registrar hotel</a>
+      </div>
+
+      <div class="menu-section">
+        <p>Empleados</p>
+        <a href="/admin/empleados">Ver empleados</a>
+      </div>
+
+      <div class="menu-section">
+        <p>Habitaciones</p>
+        <a href="/admin/habitaciones">Ver habitaciones</a>
+        <a href="/admin/habitaciones/registrar">Registrar habitación</a>
+      </div>
+
+      <div class="menu-section">
+        <p>Reservas</p>
+        <a href="/admin/reservas">Ver reservas</a>
+      </div>
+    </aside>
+
+    <header class="header">
+      <img src="/img/descarga.jpeg" alt="Banner" class="banner" />
+      <h1>Registro de Empleados</h1>
+    </header>
+
+    <div class="container">
+      <form id="employeeForm">
+        <div class="form-group">
+          <label>Nombre:</label>
+          <input type="text" id="nombre" required />
+        </div>
+
+        <div class="form-group">
+          <label>DNI:</label>
+          <input type="text" id="dni" required />
+        </div>
+
+        <div class="form-group">
+          <label>Cargo:</label>
+
+          <div class="select-search">
+            <input type="text" id="cargoSearch" placeholder="Buscar cargo..." />
+
+            <select id="cargo" size="6" required>
+              <option value="Administrador">Administrador</option>
+              <option value="Recepcionista">Recepcionista</option>
+              <option value="Seguridad">Seguridad</option>
+              <option value="Servicio de Limpieza">Servicio de Limpieza</option>
+              <option value="Supervisor">Supervisor</option>
+              <option value="Cajero">Cajero</option>
+              <option value="Recursos Humanos">Recursos Humanos</option>
+              <option value="Gerente">Gerente</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Registrar</button>
+      </form>
+
+      <h2>Lista de Empleados</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>DNI</th>
+            <th>Cargo</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody id="employeeTable"></tbody>
+      </table>
+    </div>
+    <script src="/js/aside.js"></script>
+    <script src="/js/empleado.js"></script>
+  </body>
+</html>

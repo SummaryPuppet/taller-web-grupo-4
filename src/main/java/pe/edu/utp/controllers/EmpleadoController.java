@@ -21,18 +21,12 @@ public class EmpleadoController {
     private EmpleadoService empleadoService;
 
     @GetMapping
-    String lista(){
-        return "empleado/lista";
-    }
-
-    @GetMapping("/registrar")
-    String registro (Model model){
+    String index(Model model){
         model.addAttribute("empleado", new EmpleadoDTO());
-
-        return "empleado/registro";
+        return "empleado/index";
     }
 
-    @PostMapping("/registrar")
+    @PostMapping()
     String registro(@ModelAttribute("empleado") EmpleadoDTO dto){
         empleadoService.registrarEmpleado(dto);
         return "redirect:/empleados";

@@ -1,58 +1,68 @@
+// Cargar datos guardados
 let empleados = JSON.parse(localStorage.getItem("empleados")) || [];
 
+const form = document.getElementById("employeeForm");
+const tableBody = document.getElementById("employeeTable");
+
+// Mostrar empleados
 function mostrarEmpleados() {
-    const tablaBody = document.querySelector("#empleadosTable tbody");
+    tableBody.innerHTML = "";
 
-    if (!tablaBody) return;
-
-    tablaBody.innerHTML = "";
-
-    empleados.forEach(emp => {
-        const fila = document.createElement("tr");
-
-        fila.innerHTML = `
-            <td>${emp.nombre}</td>
-            <td>${emp.apellidoP}</td>
-            <td>${emp.apellidoM}</td>
-            <td>${emp.nacionalidad}</td>
-            <td>${emp.genero}</td>
-            <td>${emp.dni}</td>
-            <td>${emp.cargo}</td>
+    empleados.forEach((emp, index) => {
+        const fila = `
+            <tr>
+                <td>${emp.nombre}</td>
+                <td>${emp.dni}</td>
+                <td>${emp.cargo}</td>
+                <td>
+                    <button class="delete-btn" onclick="eliminarEmpleado(${index})">Eliminar</button>
+                </td>
+            </tr>
         `;
-
-        tablaBody.appendChild(fila);
+        tableBody.innerHTML += fila;
     });
 }
 
-mostrarEmpleados();
-
-
-document.getElementById("btn-registrar")?.addEventListener("click", (e) => {
+// Registrar empleado
+form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const empleado = {
+    const nuevoEmpleado = {
         nombre: document.getElementById("nombre").value,
-        apellidoP: document.getElementById("apellidoP").value,
-        apellidoM: document.getElementById("apellidoM").value,
-        nacionalidad: document.getElementById("nacionalidad").value,
-        genero: document.getElementById("genero").value,
         dni: document.getElementById("dni").value,
-        cargo: document.getElementById("trabajo").value,
-        foto: ""
+        cargo: document.getElementById("cargo").value
     };
 
-    if (!empleado.nombre || !empleado.apellidoP || !empleado.dni) {
-        alert("Completa los campos obligatorios");
-        return;
-    }
-
-    empleados.push(empleado);
+    empleados.push(nuevoEmpleado);
     localStorage.setItem("empleados", JSON.stringify(empleados));
 
+    form.reset();
     mostrarEmpleados();
-    document.getElementById("registroForm").reset();
 });
 
-document.getElementById("btn-limpiar")?.addEventListener("click", () => {
-    document.getElementById("registroForm").reset();
+// Eliminar
+function eliminarEmpleado(i) {
+    empleados.splice(i, 1);
+    localStorage.setItem("empleados", JSON.stringify(empleados));
+    mostrarEmpleados();
+}
+
+// ----------------------
+// BÚSQUEDA DEL SELECT
+// ----------------------
+
+const searchInput = document.getElementById("cargoSearch");
+const selectCargo = document.getElementById("cargo");
+
+searchInput.addEventListener("keyup", () => {
+    const filter = searchInput.value.toLowerCase();
+
+    for (let i = 0; i < selectCargo.options.length; i++) {
+        let txt = selectCargo.options[i].text.toLowerCase();
+
+        selectCargo.options[i].style.display =
+            txt.includes(filter) ? "" : "none";
+    }
 });
+
+mostrarEmpleados();

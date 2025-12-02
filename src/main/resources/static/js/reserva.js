@@ -25,10 +25,6 @@ function crearModal(mensaje, tipo = "exito") {
     modal.style.boxShadow = "0 4px 15px rgba(0,0,0,0.3)";
     modal.style.animation = "fadeIn 0.3s ease";
 
-    const icon = document.createElement("div");
-    icon.style.fontSize = "40px";
-    icon.style.marginBottom = "10px";
-
     const texto = document.createElement("p");
     texto.textContent = mensaje;
     texto.style.marginBottom = "15px";
@@ -44,7 +40,6 @@ function crearModal(mensaje, tipo = "exito") {
 
     btn.onclick = () => overlay.remove();
 
-    modal.appendChild(icon);
     modal.appendChild(texto);
     modal.appendChild(btn);
     overlay.appendChild(modal);

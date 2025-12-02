@@ -1,0 +1,174 @@
+:root {
+  --primary: #0077b6;
+  --primary-hover: #1c7cd6;
+  --text-light: #ffffff;
+}
+
+/* ====== Barra lateral ====== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background: var(--primary);
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+}
+
+.menu-section {
+  margin-bottom: 1.5rem;
+}
+
+.menu-section p {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  padding-left: 8px;
+  color: var(--text-light);
+  opacity: 0.9;
+}
+
+.sidebar a {
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 10px 12px;
+  margin: 4px 0;
+  border-radius: 5px;
+  transition: background 0.3s;
+  font-size: 0.95rem;
+  display: block;
+}
+
+.sidebar a:hover {
+  background: var(--primary-hover);
+}
+
+/* ====== Botón toggle (hamburguesa) ====== */
+.menu-toggle {
+  display: none; /* se activa por media queries */
+  position: fixed;
+  top: 18px;
+  left: 15px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--text-light);
+  border: none;
+  padding: 0;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1200;
+  transition: background 0.18s ease, transform 0.12s ease, left 0.18s ease;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.menu-toggle:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+/* Estado cuando el sidebar está colapsado: poner botón pegado al borde izquierdo */
+.sidebar.collapsed ~ .menu-toggle {
+  left: 15px;
+}
+
+/* Estado cuando sidebar está visible en escritorio: alinear a la derecha del sidebar */
+.sidebar ~ .menu-toggle {
+  left: calc(220px + 12px);
+}
+
+/* ====== Espaciado del contenido principal ====== */
+.hero,
+.container {
+  margin-left: 220px;
+  transition: margin-left 0.3s ease;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 850px) {
+  /* Ocultar sidebar inicialmente */
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  /* Mostrar cuando esté activa */
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  /* Mostrar el botón y colocarlo cerca del borde */
+  .menu-toggle {
+    display: block;
+    left: 15px; /* mobile: botón en esquina */
+  }
+
+  /* Ajustar el contenido cuando el menú esté oculto */
+  .hero,
+  .container {
+    margin-left: 0;
+  }
+}
+
+/* ====== Colapsar Sidebar (toggle global) ====== */
+.sidebar.collapsed {
+  transform: translateX(-100%);
+}
+
+/* Cuando el sidebar está colapsado, los elementos hermanos (header/container/hero) ocupan todo el ancho */
+.sidebar.collapsed ~ .hero,
+.sidebar.collapsed ~ .container,
+.sidebar.collapsed ~ .header {
+  margin-left: 0;
+  width: 100%;
+}
+
+/* Overlay que aparece cuando el sidebar se muestra en pantallas pequeñas */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 900;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Transiciones más suaves para el sidebar y el header cuando se colapsa/expande */
+.sidebar,
+.hero,
+.container,
+.header {
+  transition: all 0.25s ease;
+}
+
+/* Permitir colapsar el sidebar en escritorio mediante el botón */
+@media (min-width: 851px) {
+  .menu-toggle {
+    display: block;
+    left: calc(220px + 12px);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-light);
+    backdrop-filter: blur(4px);
+  }
+}
